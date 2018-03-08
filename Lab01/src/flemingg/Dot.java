@@ -15,11 +15,12 @@ public class Dot {
     private double y;
 
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor needs x coordinate
+     * and y coordinate of dot.
+     * @param x x coordinate
+     * @param y y coordinate
      */
-    public Dot (double x, double y) {
+    public Dot(double x, double y) {
         this.x = x;
         this.y = y;
     }

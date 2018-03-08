@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flemingg.Dot2DotController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flemingg.Dot2DotController">
    <children>
       <MenuBar>
         <menus>
@@ -26,10 +26,11 @@
             </Menu>
         </menus>
       </MenuBar>
-      <Canvas fx:id="screenCanvas" height="510.0" width="748.0" />
+      <Canvas fx:id="screenCanvas" height="510.0" width="590.0" />
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Message Center" />
+            <Text fx:id="status" layoutX="112.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to dot reader!" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

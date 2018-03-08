@@ -9,10 +9,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.MenuItem;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import java.io.File;
-import java.io.IOException;
+
+import java.io.*;
 import java.net.URL;
+import java.util.Date;
+import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 /**
@@ -29,7 +34,11 @@ public class Dot2DotController implements Initializable {
     MenuItem open;
     @FXML
     MenuItem dots;
+    @FXML
+    Text status;
+
     private Picture pic;
+    private BufferedWriter logger;
 
     /**
      * initializes the GUI
@@ -38,17 +47,27 @@ public class Dot2DotController implements Initializable {
      */
     public void initialize(URL url, ResourceBundle resources) {
         System.out.println("Called the initialize method.");
-        lines.setOnAction(ae -> pic.drawLines(screenCanvas));
-        dots.setOnAction(ae -> pic.drawDots(screenCanvas));
+        try {
+            FileWriter writer = new FileWriter("Dot2DotErrorLog.txt");
+            logger = new BufferedWriter(writer);
+            logger.write("Program started at time "
+                    + System.currentTimeMillis() + "\n");
 
-        open.setOnAction(ae -> {
-            try {
-                openFile();
-            } catch (IOException e) {
-                System.out.println("Oh no! IOException in dots occurs.");
-            }
+        } catch (FileNotFoundException e) {
+            status.setText("Oh no! The log file wasn't found.");
+        } catch (IOException e) {
+            status.setText("Oh no! The log file wasn't loaded correctly.");
+        }
+        lines.setOnAction(ae ->  {
+            pic.drawLines(screenCanvas);
+        });
+        dots.setOnAction(ae -> {
+            pic.drawDots(screenCanvas);
         });
 
+        open.setOnAction(ae -> {
+            openFile();
+        });
     }
 
     /**
@@ -56,10 +75,32 @@ public class Dot2DotController implements Initializable {
      * Presents the dot file chooser to the user.
      * @throws IOException if dots is invalid
      */
-    public void openFile() throws IOException {
+    public void openFile() {
         File dots = getDotFileChooser().showOpenDialog(null);
-        pic = new Picture(screenCanvas.getWidth(), screenCanvas.getHeight());
-        pic.load(dots);
+        if (dots!=null) {
+            pic = new Picture(screenCanvas.getWidth(), screenCanvas.getHeight());
+            try {
+                pic.load(dots);
+            } catch (IOException e) {
+                status.setFill(Color.RED);
+                status.setText("The selected file couldn't be read from or opened.");
+                logError("The selected file resulted in an IOException.");
+            } catch (InputMismatchException e) {
+                status.setFill(Color.RED);
+                status.setText("The file submitted had mis-formatted data.");
+                logError("The file submitted by the user was not " +
+                        "formatted correctly, \n" +
+                        "and could not be parsed into points.");
+            } catch (NumberFormatException e) {
+                status.setFill(Color.RED);
+                status.setText("The file submitted had bad or unreadable data.");
+                logError("The file submitted by the user did not have readable data.");
+            }
+        }
+        else {
+            status.setText("No file specified!");
+            logError("User did not specify a file upon exiting the filechooser");
+        }
     }
     /**
      * Event handler for closing the screen.
@@ -72,9 +113,25 @@ public class Dot2DotController implements Initializable {
     private FileChooser getDotFileChooser(){
         //Set extension filter
         FileChooser.ExtensionFilter extFilterTxt =
-                new FileChooser.ExtensionFilter("text files (*.dot)", "*.dot");
+                new FileChooser.ExtensionFilter("dot files (*.dot)", "*.dot");
         FileChooser chooser = new FileChooser();
         chooser.getExtensionFilters().addAll(extFilterTxt);
         return chooser;
+    }
+    private void clear (){
+        screenCanvas.getGraphicsContext2D()
+                .clearRect(0, 0, screenCanvas.getWidth(), screenCanvas.getHeight());
+    }
+    private void logError(String message) {
+        try {
+            Date date = new Date();
+            logger.write("An exception occurred, see details below: \n");
+            logger.write("TIME: " + date +"\n");
+            logger.write(message);
+            logger.write("\n");
+            logger.flush();
+        } catch (IOException e) {
+            status.setText("There was an error while logging an exception!");
+        }
     }
 }

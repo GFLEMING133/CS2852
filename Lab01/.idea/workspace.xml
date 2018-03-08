@@ -19,17 +19,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Dot2DotController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Dot2DotController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/flemingg/Dot2DotController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="60" column="51" lean-forward="false" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
+            <state relative-caret-position="70">
+              <caret line="126" column="31" lean-forward="false" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#1703#1704#0" expanded="true" />
-                <element signature="e#1734#1735#0" expanded="true" />
+                <element signature="e#3350#3351#0" expanded="true" />
+                <element signature="e#3381#3382#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dot2DotErrorLog.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Dot2DotErrorLog.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="21" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -37,14 +47,14 @@
       <file leaf-file-name="Dot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/flemingg/Dot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="281">
+              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
               <folding>
-                <element signature="e#0#464#0" expanded="true" />
-                <element signature="e#384#385#0" expanded="true" />
-                <element signature="e#408#409#0" expanded="true" />
-                <element signature="e#435#436#0" expanded="true" />
-                <element signature="e#459#460#0" expanded="true" />
+                <element signature="e#0#552#0" expanded="true" />
+                <element signature="e#472#473#0" expanded="true" />
+                <element signature="e#496#497#0" expanded="true" />
+                <element signature="e#523#524#0" expanded="true" />
+                <element signature="e#547#548#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -53,8 +63,8 @@
       <file leaf-file-name="Dot2DotController.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/flemingg/Dot2DotController.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="31" column="38" lean-forward="false" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+            <state relative-caret-position="560">
+              <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -63,14 +73,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Picture.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Picture.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/flemingg/Picture.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+            <state relative-caret-position="176">
+              <caret line="59" column="64" lean-forward="false" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
               <folding>
-                <element signature="e#0#3645#0" expanded="true" />
+                <element signature="e#0#3182#0" expanded="true" />
                 <element signature="imports" expanded="true" />
+                <element signature="e#3090#3091#0" expanded="true" />
+                <element signature="e#3178#3179#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,6 +105,8 @@
       <find>Picture</find>
       <find>fx:id</find>
       <find>WIDTH</find>
+      <find>points</find>
+      <find>time</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -114,17 +128,18 @@
         <option value="$PROJECT_DIR$/src/Dot2DotController.fxml" />
         <option value="$PROJECT_DIR$/src/scratch.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/flemingg/Dot2DotController.fxml" />
         <option value="$PROJECT_DIR$/src/flemingg/Dot2Dot.java" />
-        <option value="$PROJECT_DIR$/src/flemingg/Dot2DotController.java" />
-        <option value="$PROJECT_DIR$/src/flemingg/Picture.java" />
         <option value="$PROJECT_DIR$/src/flemingg/Dot.java" />
+        <option value="$PROJECT_DIR$/src/flemingg/Dot2DotController.fxml" />
+        <option value="$PROJECT_DIR$/src/flemingg/Picture.java" />
+        <option value="$PROJECT_DIR$/Dot2DotErrorLog.txt" />
+        <option value="$PROJECT_DIR$/src/flemingg/Dot2DotController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="x" value="-7" />
+    <option name="width" value="1300" />
     <option name="height" value="1057" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -208,7 +223,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="org.infernus.idea.checkstyle.CheckStyleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/CS2852/CS2852_checkStyle-v1.xml" />
   </component>
   <component name="RecentsManager">
@@ -392,9 +407,9 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5032258" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="1204" y="140" width="650" height="602" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26153848" sideWeight="0.4967742" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46483517" sideWeight="0.4967742" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32857144" sideWeight="0.4967742" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CheckStyle" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32857144" sideWeight="0.4967742" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -477,7 +492,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/flemingg/Picture.java</url>
-          <line>77</line>
+          <line>71</line>
           <properties class="flemingg.Picture" method="drawDots">
             <option name="EMULATED" value="true" />
           </properties>
@@ -485,7 +500,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/flemingg/Picture.java</url>
-          <line>92</line>
+          <line>85</line>
           <properties class="flemingg.Picture" method="drawLines">
             <option name="EMULATED" value="true" />
           </properties>
@@ -504,8 +519,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1703#1704#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#3350#3351#0" expanded="true" />
+            <element signature="e#3381#3382#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -536,8 +551,10 @@
         <state relative-caret-position="1160">
           <caret line="58" column="112" lean-forward="false" selection-start-line="58" selection-start-column="112" selection-end-line="58" selection-end-column="112" />
           <folding>
-            <element signature="e#0#3645#0" expanded="true" />
+            <element signature="e#0#3182#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3178#3179#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -549,8 +566,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#1703#1704#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#3350#3351#0" expanded="true" />
+            <element signature="e#3381#3382#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -581,8 +598,10 @@
         <state relative-caret-position="1160">
           <caret line="58" column="112" lean-forward="true" selection-start-line="58" selection-start-column="112" selection-end-line="58" selection-end-column="112" />
           <folding>
-            <element signature="e#0#3645#0" expanded="true" />
+            <element signature="e#0#3182#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3178#3179#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -623,8 +642,10 @@
         <state relative-caret-position="800">
           <caret line="40" column="45" lean-forward="true" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
           <folding>
-            <element signature="e#0#3645#0" expanded="true" />
+            <element signature="e#0#3182#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3178#3179#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -658,8 +679,10 @@
         <state relative-caret-position="180">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <element signature="e#0#3645#0" expanded="true" />
+            <element signature="e#0#3182#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3178#3179#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -734,33 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flemingg/Dot2DotController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="60" column="51" lean-forward="false" selection-start-line="60" selection-start-column="51" selection-end-line="60" selection-end-column="51" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <element signature="e#1703#1704#0" expanded="true" />
-            <element signature="e#1734#1735#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/flemingg/Dot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#464#0" expanded="true" />
-            <element signature="e#384#385#0" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#435#436#0" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/flemingg/Dot2Dot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
@@ -771,10 +767,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/flemingg/Picture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="59" column="64" lean-forward="false" selection-start-line="59" selection-start-column="64" selection-end-line="59" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#3182#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#3090#3091#0" expanded="true" />
+            <element signature="e#3178#3179#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lab8.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flemingg/Dot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#552#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#547#548#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/flemingg/Dot2DotController.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="31" column="38" lean-forward="false" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="38" />
+        <state relative-caret-position="560">
+          <caret line="28" column="30" lean-forward="true" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -782,13 +813,23 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/flemingg/Picture.java">
+    <entry file="file://$PROJECT_DIR$/Dot2DotErrorLog.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="70" column="26" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
+        <state relative-caret-position="20">
+          <caret line="1" column="21" lean-forward="false" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/flemingg/Dot2DotController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="126" column="31" lean-forward="false" selection-start-line="126" selection-start-column="31" selection-end-line="126" selection-end-column="31" />
           <folding>
-            <element signature="e#0#3645#0" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#3350#3351#0" expanded="true" />
+            <element signature="e#3381#3382#0" expanded="true" />
           </folding>
         </state>
       </provider>

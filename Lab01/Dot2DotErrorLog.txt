@@ -1,0 +1,4 @@
+Program started at time 1520540094482
+An exception occurred, see details below:
+TIME: Thu Mar 08 14:14:58 CST 2018
+User did not specify a file upon exiting the filechooser
