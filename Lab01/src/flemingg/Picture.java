@@ -1,5 +1,8 @@
 /*
- * SE1021
+ * CS2852
+ * Name: Grace FLeming
+ * Date: 3/7/18
+ * Assignment: Lab01
  */
 package flemingg;
 
@@ -21,8 +24,8 @@ public class Picture {
     private static final int DOT_WIDTH = 1;
     private static final int DOT_HEIGHT = 1;
 
-    private static double canvasHeight=0;
-    private static double canvasWidth=0;
+    private double canvasHeight = 0;
+    private double canvasWidth = 0;
 
     private double x;
     private double y;
@@ -31,10 +34,12 @@ public class Picture {
     private ArrayList<ArrayList<Double>> points = new ArrayList<>();
     /**
      * Requires the height and width of the given canvas item
+     * @param height for height of canvas
+     * @param width width of canvas
      */
     public Picture(double width, double height) {
-        this.canvasHeight=height;
-        this.canvasWidth=width;
+        this.canvasHeight = height;
+        this.canvasWidth = width;
     }
     /**
      * Loads
@@ -46,24 +51,24 @@ public class Picture {
         BufferedReader reader = new BufferedReader(io);
 
         int i = 0;
-        String currentLine="";
+        String currentLine = "";
         while(reader.ready()) {
             ArrayList<Double> pairOfPoints = new ArrayList<>();
-            currentLine=reader.readLine();
+            currentLine = reader.readLine();
             getCoordinatesFromLine(currentLine);
-            pairOfPoints.add(0,centeredXTranslator);
-            pairOfPoints.add(1,centeredYTranslator);
+            pairOfPoints.add(0, centeredXTranslator);
+            pairOfPoints.add(1, centeredYTranslator);
             points.add(pairOfPoints);
         }
     }
-    private void getCoordinatesFromLine(String string) throws InputMismatchException, IndexOutOfBoundsException{
+    private void getCoordinatesFromLine(String string)
+            throws InputMismatchException, IndexOutOfBoundsException{
         String[] components = string.split(",");
         System.out.println(components[0] + "," + components[1]);
         x = Double.parseDouble(components[0]);
         y = Double.parseDouble(components[1]);
-        centeredXTranslator = x*canvasWidth-(DOT_WIDTH/2.0);
-        centeredYTranslator =y*canvasHeight-(DOT_HEIGHT/2.0);
-
+        centeredXTranslator = x * canvasWidth + (DOT_WIDTH / 2.0);
+        centeredYTranslator = y * canvasHeight + (DOT_HEIGHT / 2.0);
     }
 
     /**
@@ -75,7 +80,7 @@ public class Picture {
             GraphicsContext drawer = canvas.getGraphicsContext2D();
             double canvasx = pairOfPoints.get(0);
             double canvasy = pairOfPoints.get(1);
-            drawer.fillOval(canvasx,canvasy,DOT_WIDTH,DOT_HEIGHT);
+            drawer.fillOval(canvasx, canvasy, DOT_WIDTH, DOT_HEIGHT);
             System.out.println("Drew pts: " + canvasx + "," + canvasy);
         }
 
@@ -87,23 +92,23 @@ public class Picture {
      */
     public void drawLines(Canvas canvas) {
         GraphicsContext context = canvas.getGraphicsContext2D();
-        context.moveTo(0,0);
+        context.moveTo(0, 0);
         context.beginPath();
         for(int i = 0; i < points.size(); i++) {
             ArrayList<Double> pairOfPoints = points.get(i);
             double canvasx = pairOfPoints.get(0);
             double canvasy = pairOfPoints.get(1);
-            context.lineTo(canvasx,canvasy);
+            context.lineTo(canvasx, canvasy);
             context.stroke();
         }
         context.closePath();
 
     }
     private static double pullOutDouble(String string) {
-        String temp= "";
-        for(int i = 0; i<string.length(); i++) {
-            if (isDigit(string.charAt(i)) || string.charAt(i)=='.') {
-                temp= temp + string.charAt(i);
+        String temp = "";
+        for(int i = 0; i < string.length(); i++) {
+            if (isDigit(string.charAt(i)) || string.charAt(i) == '.') {
+                temp = temp + string.charAt(i);
             }
         }
         return Double.parseDouble(temp);

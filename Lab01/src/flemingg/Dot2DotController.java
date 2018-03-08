@@ -1,5 +1,5 @@
 /**
- * SE1021
+ * CS2852
  *
  */
 package flemingg;
@@ -8,7 +8,6 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.layout.Pane;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import java.io.File;
@@ -59,7 +58,7 @@ public class Dot2DotController implements Initializable {
      */
     public void openFile() throws IOException {
         File dots = getDotFileChooser().showOpenDialog(null);
-        pic = new Picture(screenCanvas.getWidth(),screenCanvas.getHeight());
+        pic = new Picture(screenCanvas.getWidth(), screenCanvas.getHeight());
         pic.load(dots);
     }
     /**
@@ -70,12 +69,6 @@ public class Dot2DotController implements Initializable {
         Platform.exit();
     }
 
-    /**
-     * Loads the dots from a file
-     * @param file file to load dots from
-     */
-    public void load(File file) {
-    }
     private FileChooser getDotFileChooser(){
         //Set extension filter
         FileChooser.ExtensionFilter extFilterTxt =

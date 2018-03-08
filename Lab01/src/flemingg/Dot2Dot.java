@@ -1,5 +1,5 @@
 /*
- * SE1021
+ * CS2852
  */
 package flemingg;
 
@@ -31,7 +31,7 @@ public class Dot2Dot extends Application {
             primaryRoot = new Pane();
             primaryRoot.getChildren().add(
                     new Label("Could not load layout. " +
-                        "Configuration error!\nMissing file: "+ fxmlLocation));
+                        "Configuration error!\nMissing file: " + fxmlLocation));
         }
         primaryStage.setTitle("Dot2Dot");
         Scene primaryScene = new Scene(primaryRoot);
