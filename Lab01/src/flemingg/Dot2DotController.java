@@ -7,6 +7,7 @@ package flemingg;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
@@ -22,13 +23,14 @@ import java.util.ResourceBundle;
  */
 public class Dot2DotController implements Initializable {
     @FXML
-    Pane display;
+    Canvas screenCanvas;
     @FXML
     MenuItem lines;
     @FXML
     MenuItem open;
     @FXML
     MenuItem dots;
+    private Picture pic;
 
     /**
      * initializes the GUI
@@ -37,8 +39,8 @@ public class Dot2DotController implements Initializable {
      */
     public void initialize(URL url, ResourceBundle resources) {
         System.out.println("Called the initialize method.");
-        //lines.setOnAction();
-        //draw.setOnAction();
+        lines.setOnAction(ae -> pic.drawDots(screenCanvas));
+        dots.setOnAction(ae -> pic.drawLines(screenCanvas));
 
         open.setOnAction(ae -> {
             try {
@@ -57,7 +59,7 @@ public class Dot2DotController implements Initializable {
      */
     public void openFile() throws IOException {
         File dots = getDotFileChooser().showOpenDialog(null);
-        Picture pic = new Picture();
+        Picture pic = new Picture(screenCanvas.getWidth(),screenCanvas.getHeight());
         pic.load(dots);
     }
     /**

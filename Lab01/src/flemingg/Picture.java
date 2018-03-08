@@ -8,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.InputMismatchException;
 
 import static java.lang.Character.isDigit;
 
@@ -18,34 +18,49 @@ import static java.lang.Character.isDigit;
  * @version 1
  */
 public class Picture {
-    private static final int WIDTH = 1;
-    private static final int HEIGHT = 1;
+    private static final int DOT_WIDTH = 5;
+    private static final int DOT_HEIGHT = 5;
+
+    private static double canvasHeight=0;
+    private static double canvasWidth=0;
+
     private double x;
     private double y;
-    private double centeredXTranslator=x-WIDTH/2.0;
-    private double centeredYTranslator=y-HEIGHT/2.0;
+    private double centeredXTranslator=x-DOT_WIDTH/2.0;
+    private double centeredYTranslator=y-DOT_HEIGHT/2.0;
     private ArrayList<ArrayList<Double>> points = new ArrayList<>();
-
+    /**
+     * Requires the height and width of the given canvas item
+     */
+    public Picture(double width, double height) {
+        this.canvasHeight=width;
+        this.canvasWidth=height;
+    }
     /**
      * Loads
      * @param file file to read points from
      * @throws IOException if file has error
      */
     public void load(File file) throws IOException {
-        InputStream io = new FileInputStream(file);
-        DataInputStream dataInputStream= new DataInputStream(io);
+        FileReader io = new FileReader(file);
+        BufferedReader reader = new BufferedReader(io);
 
         int i = 0;
+        String currentLine="";
         ArrayList<Double> pairOfPoints = new ArrayList<>();
-        while(dataInputStream.available() != 0) {
-            x = dataInputStream.readDouble();
-            dataInputStream.readChar(); // ','
-            y = (dataInputStream.readDouble());
+        while(reader.ready()) {
+            currentLine=reader.readLine();
+            getCoordinatesFromLine(currentLine);
             pairOfPoints.add(centeredXTranslator);
             pairOfPoints.add(centeredYTranslator);
             points.add(pairOfPoints);
-            dataInputStream.readChar(); //consume newline
         }
+    }
+    private void getCoordinatesFromLine(String string) throws InputMismatchException, IndexOutOfBoundsException{
+        String[] components = string.split(",");
+        x = Double.parseDouble(components[0]);
+        y = Double.parseDouble(components[1]);
+
     }
 
     /**
@@ -55,7 +70,10 @@ public class Picture {
     public void drawDots(Canvas canvas) {
         for (ArrayList<Double> pairOfPoints : points) {
             GraphicsContext drawer = canvas.getGraphicsContext2D();
-            drawer.fillOval(pairOfPoints.get(0), pairOfPoints.get(1),WIDTH,HEIGHT);
+            double x = pairOfPoints.get(0)*canvasWidth;
+            double y = pairOfPoints.get(1)*canvasHeight;
+            drawer.fillOval(x, y,DOT_WIDTH,DOT_HEIGHT);
+            System.out.println("Drew pts: " + x + "," + y);
         }
 
     }
