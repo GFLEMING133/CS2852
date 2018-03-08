@@ -39,8 +39,8 @@ public class Dot2DotController implements Initializable {
      */
     public void initialize(URL url, ResourceBundle resources) {
         System.out.println("Called the initialize method.");
-        lines.setOnAction(ae -> pic.drawDots(screenCanvas));
-        dots.setOnAction(ae -> pic.drawLines(screenCanvas));
+        lines.setOnAction(ae -> pic.drawLines(screenCanvas));
+        dots.setOnAction(ae -> pic.drawDots(screenCanvas));
 
         open.setOnAction(ae -> {
             try {
@@ -59,7 +59,7 @@ public class Dot2DotController implements Initializable {
      */
     public void openFile() throws IOException {
         File dots = getDotFileChooser().showOpenDialog(null);
-        Picture pic = new Picture(screenCanvas.getWidth(),screenCanvas.getHeight());
+        pic = new Picture(screenCanvas.getWidth(),screenCanvas.getHeight());
         pic.load(dots);
     }
     /**

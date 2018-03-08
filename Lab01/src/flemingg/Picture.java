@@ -18,23 +18,23 @@ import static java.lang.Character.isDigit;
  * @version 1
  */
 public class Picture {
-    private static final int DOT_WIDTH = 5;
-    private static final int DOT_HEIGHT = 5;
+    private static final int DOT_WIDTH = 1;
+    private static final int DOT_HEIGHT = 1;
 
     private static double canvasHeight=0;
     private static double canvasWidth=0;
 
     private double x;
     private double y;
-    private double centeredXTranslator=x-DOT_WIDTH/2.0;
-    private double centeredYTranslator=y-DOT_HEIGHT/2.0;
+    private double centeredXTranslator;
+    private double centeredYTranslator;
     private ArrayList<ArrayList<Double>> points = new ArrayList<>();
     /**
      * Requires the height and width of the given canvas item
      */
     public Picture(double width, double height) {
-        this.canvasHeight=width;
-        this.canvasWidth=height;
+        this.canvasHeight=height;
+        this.canvasWidth=width;
     }
     /**
      * Loads
@@ -47,19 +47,22 @@ public class Picture {
 
         int i = 0;
         String currentLine="";
-        ArrayList<Double> pairOfPoints = new ArrayList<>();
         while(reader.ready()) {
+            ArrayList<Double> pairOfPoints = new ArrayList<>();
             currentLine=reader.readLine();
             getCoordinatesFromLine(currentLine);
-            pairOfPoints.add(centeredXTranslator);
-            pairOfPoints.add(centeredYTranslator);
+            pairOfPoints.add(0,centeredXTranslator);
+            pairOfPoints.add(1,centeredYTranslator);
             points.add(pairOfPoints);
         }
     }
     private void getCoordinatesFromLine(String string) throws InputMismatchException, IndexOutOfBoundsException{
         String[] components = string.split(",");
+        System.out.println(components[0] + "," + components[1]);
         x = Double.parseDouble(components[0]);
         y = Double.parseDouble(components[1]);
+        centeredXTranslator = x*canvasWidth-(DOT_WIDTH/2.0);
+        centeredYTranslator =y*canvasHeight-(DOT_HEIGHT/2.0);
 
     }
 
@@ -70,10 +73,10 @@ public class Picture {
     public void drawDots(Canvas canvas) {
         for (ArrayList<Double> pairOfPoints : points) {
             GraphicsContext drawer = canvas.getGraphicsContext2D();
-            double x = pairOfPoints.get(0)*canvasWidth;
-            double y = pairOfPoints.get(1)*canvasHeight;
-            drawer.fillOval(x, y,DOT_WIDTH,DOT_HEIGHT);
-            System.out.println("Drew pts: " + x + "," + y);
+            double canvasx = pairOfPoints.get(0);
+            double canvasy = pairOfPoints.get(1);
+            drawer.fillOval(canvasx,canvasy,DOT_WIDTH,DOT_HEIGHT);
+            System.out.println("Drew pts: " + canvasx + "," + canvasy);
         }
 
     }
@@ -84,7 +87,16 @@ public class Picture {
      */
     public void drawLines(Canvas canvas) {
         GraphicsContext context = canvas.getGraphicsContext2D();
+        context.moveTo(0,0);
         context.beginPath();
+        for(int i = 0; i < points.size(); i++) {
+            ArrayList<Double> pairOfPoints = points.get(i);
+            double canvasx = pairOfPoints.get(0);
+            double canvasy = pairOfPoints.get(1);
+            context.lineTo(canvasx,canvasy);
+            context.stroke();
+        }
+        context.closePath();
 
     }
     private static double pullOutDouble(String string) {
