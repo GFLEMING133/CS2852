@@ -10,10 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.MenuItem;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-
 import java.io.*;
 import java.net.URL;
 import java.util.Date;
@@ -58,7 +56,7 @@ public class Dot2DotController implements Initializable {
         } catch (IOException e) {
             status.setText("Oh no! The log file wasn't loaded correctly.");
         }
-        lines.setOnAction(ae ->  {
+        lines.setOnAction(ae -> {
             pic.drawLines(screenCanvas);
         });
         dots.setOnAction(ae -> {
@@ -73,31 +71,31 @@ public class Dot2DotController implements Initializable {
     /**
      * Event handler for opening a file
      * Presents the dot file chooser to the user.
-     * @throws IOException if dots is invalid
      */
     public void openFile() {
         File dots = getDotFileChooser().showOpenDialog(null);
-        if (dots!=null) {
+        if (dots != null) {
             pic = new Picture(screenCanvas.getWidth(), screenCanvas.getHeight());
             try {
                 pic.load(dots);
+                status.setFill(Color.BLUE);
+                status.setText("Points were loaded successfully!");
             } catch (IOException e) {
                 status.setFill(Color.RED);
                 status.setText("The selected file couldn't be read from or opened.");
                 logError("The selected file resulted in an IOException.");
-            } catch (InputMismatchException e) {
+            } catch(InputMismatchException e) {
                 status.setFill(Color.RED);
                 status.setText("The file submitted had mis-formatted data.");
                 logError("The file submitted by the user was not " +
                         "formatted correctly, \n" +
                         "and could not be parsed into points.");
-            } catch (NumberFormatException e) {
+            } catch(NumberFormatException e) {
                 status.setFill(Color.RED);
                 status.setText("The file submitted had bad or unreadable data.");
                 logError("The file submitted by the user did not have readable data.");
             }
-        }
-        else {
+        } else {
             status.setText("No file specified!");
             logError("User did not specify a file upon exiting the filechooser");
         }
@@ -118,15 +116,11 @@ public class Dot2DotController implements Initializable {
         chooser.getExtensionFilters().addAll(extFilterTxt);
         return chooser;
     }
-    private void clear (){
-        screenCanvas.getGraphicsContext2D()
-                .clearRect(0, 0, screenCanvas.getWidth(), screenCanvas.getHeight());
-    }
     private void logError(String message) {
         try {
             Date date = new Date();
             logger.write("An exception occurred, see details below: \n");
-            logger.write("TIME: " + date +"\n");
+            logger.write("TIME: " + date + "\n");
             logger.write(message);
             logger.write("\n");
             logger.flush();
