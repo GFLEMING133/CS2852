@@ -1,6 +1,9 @@
-/**
+/*
  * CS2852
- *
+ * Spring 2018
+ * Lab 1 Dot2Dot
+ * Name: Grace Fleming
+ * Createdc 3/5/2018
  */
 package flemingg;
 
@@ -8,11 +11,17 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileWriter;
 import java.net.URL;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -33,10 +42,19 @@ public class Dot2DotController implements Initializable {
     @FXML
     MenuItem dots;
     @FXML
+    MenuItem quadratic;
+    @FXML
+    MenuItem bezier;
+    @FXML
+    ColorPicker color;
+    @FXML
+    Slider width;
+    @FXML
     Text status;
 
     private Picture pic;
     private BufferedWriter logger;
+    private boolean loadSuccessful;
 
     /**
      * initializes the GUI
@@ -45,6 +63,7 @@ public class Dot2DotController implements Initializable {
      */
     public void initialize(URL url, ResourceBundle resources) {
         System.out.println("Called the initialize method.");
+        pic = new Picture(screenCanvas.getWidth(), screenCanvas.getHeight());
         try {
             FileWriter writer = new FileWriter("Dot2DotErrorLog.txt");
             logger = new BufferedWriter(writer);
@@ -57,12 +76,37 @@ public class Dot2DotController implements Initializable {
             status.setText("Oh no! The log file wasn't loaded correctly.");
         }
         lines.setOnAction(ae -> {
-            pic.drawLines(screenCanvas);
+            if (loadSuccessful) {
+                pic.drawLines(screenCanvas);
+            }
         });
         dots.setOnAction(ae -> {
-            pic.drawDots(screenCanvas);
+            if (loadSuccessful) {
+                pic.drawDots(screenCanvas);
+            }
         });
-
+        quadratic.setOnAction(ae -> {
+            if (loadSuccessful) {
+                pic.drawQuadraticCurve(screenCanvas);
+            }
+        });
+        bezier.setOnAction(ae -> {
+            if (loadSuccessful) {
+                pic.drawBezierCurve(screenCanvas);
+            }
+        });
+        width.setOnDragDone(ae -> {
+            pic.setWidth((int)width.getValue());
+        });
+        color.setOnAction(ae -> {
+            if (color.getValue() != null) {
+                try {
+                    pic.setColor(color.getValue());
+                } catch (NullPointerException e) {
+                    status.setText("oops! We had a problem setting that color. ");
+                }
+            }
+        });
         open.setOnAction(ae -> {
             openFile();
         });
@@ -75,7 +119,8 @@ public class Dot2DotController implements Initializable {
     public void openFile() {
         File dots = getDotFileChooser().showOpenDialog(null);
         if (dots != null) {
-            pic = new Picture(screenCanvas.getWidth(), screenCanvas.getHeight());
+
+            loadSuccessful = true;
             try {
                 pic.load(dots);
                 status.setFill(Color.BLUE);
@@ -83,21 +128,25 @@ public class Dot2DotController implements Initializable {
             } catch (IOException e) {
                 status.setFill(Color.RED);
                 status.setText("The selected file couldn't be read from or opened.");
+                loadSuccessful = false;
                 logError("The selected file resulted in an IOException.");
             } catch(InputMismatchException e) {
+                loadSuccessful = false;
                 status.setFill(Color.RED);
                 status.setText("The file submitted had mis-formatted data.");
                 logError("The file submitted by the user was not " +
                         "formatted correctly, \n" +
                         "and could not be parsed into points.");
             } catch(NumberFormatException e) {
+                loadSuccessful = false;
                 status.setFill(Color.RED);
-                status.setText("The file submitted had bad or unreadable data.");
+                status.setText("The file submitted had bad data," +
+                        " or was not the right type of file.");
                 logError("The file submitted by the user did not have readable data.");
             }
         } else {
             status.setText("No file specified!");
-            logError("User did not specify a file upon exiting the filechooser");
+            logError("User did not specify a file upon exiting the file chooser");
         }
     }
     /**

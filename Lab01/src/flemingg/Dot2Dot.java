@@ -1,5 +1,9 @@
 /*
  * CS2852
+ * Spring 2018
+ * Lab 1 Dot2Dot
+ * Name: Grace Fleming
+ * Createdc 3/5/2018
  */
 package flemingg;
 
@@ -37,6 +41,5 @@ public class Dot2Dot extends Application {
         Scene primaryScene = new Scene(primaryRoot);
         primaryStage.setScene(primaryScene);
         primaryStage.show();
-
     }
 }
