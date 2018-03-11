@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -48,7 +48,7 @@ public class Dot2DotController implements Initializable {
     @FXML
     ColorPicker color;
     @FXML
-    Slider width;
+    TextField radius;
     @FXML
     Text status;
 
@@ -69,7 +69,6 @@ public class Dot2DotController implements Initializable {
             logger = new BufferedWriter(writer);
             logger.write("Program started at time "
                     + System.currentTimeMillis() + "\n");
-
         } catch (FileNotFoundException e) {
             status.setText("Oh no! The log file wasn't found.");
         } catch (IOException e) {
@@ -77,33 +76,45 @@ public class Dot2DotController implements Initializable {
         }
         lines.setOnAction(ae -> {
             if (loadSuccessful) {
+                clear(screenCanvas);
                 pic.drawLines(screenCanvas);
             }
         });
         dots.setOnAction(ae -> {
             if (loadSuccessful) {
+                clear(screenCanvas);
                 pic.drawDots(screenCanvas);
             }
         });
         quadratic.setOnAction(ae -> {
             if (loadSuccessful) {
+                clear(screenCanvas);
                 pic.drawQuadraticCurve(screenCanvas);
             }
         });
         bezier.setOnAction(ae -> {
             if (loadSuccessful) {
+                clear(screenCanvas);
                 pic.drawBezierCurve(screenCanvas);
             }
         });
-        width.setOnDragDone(ae -> {
-            pic.setWidth((int)width.getValue());
+        radius.setOnAction(ae -> {
+            try {
+                pic.setWidth(Integer.parseInt(radius.getText()));
+            } catch (InputMismatchException e) {
+                status.setText("Enter an integer please.");
+            }
+
         });
         color.setOnAction(ae -> {
             if (color.getValue() != null) {
                 try {
                     pic.setColor(color.getValue());
+                    clear(screenCanvas);
+                    pic.drawDots(screenCanvas);
+                    pic.drawLines(screenCanvas);
                 } catch (NullPointerException e) {
-                    status.setText("oops! We had a problem setting that color. ");
+                    status.setText("oops! We had a problem setting that color.");
                 }
             }
         });
@@ -111,7 +122,6 @@ public class Dot2DotController implements Initializable {
             openFile();
         });
     }
-
     /**
      * Event handler for opening a file
      * Presents the dot file chooser to the user.
@@ -119,8 +129,8 @@ public class Dot2DotController implements Initializable {
     public void openFile() {
         File dots = getDotFileChooser().showOpenDialog(null);
         if (dots != null) {
-
             loadSuccessful = true;
+            clear(screenCanvas);
             try {
                 pic.load(dots);
                 status.setFill(Color.BLUE);
@@ -148,6 +158,8 @@ public class Dot2DotController implements Initializable {
             status.setText("No file specified!");
             logError("User did not specify a file upon exiting the file chooser");
         }
+        pic.drawDots(screenCanvas);
+        pic.drawLines(screenCanvas);
     }
     /**
      * Event handler for closing the screen.
@@ -176,5 +188,9 @@ public class Dot2DotController implements Initializable {
         } catch (IOException e) {
             status.setText("There was an error while logging an exception!");
         }
+    }
+    private void clear(Canvas canvas){
+        canvas.getGraphicsContext2D().clearRect(0, 0,
+                canvas.getWidth(), canvas.getHeight());
     }
 }
