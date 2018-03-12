@@ -15,6 +15,7 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+
 /**
  * Class to hold a list of dots
  * and manage how the list is displayed.
@@ -23,20 +24,15 @@ import java.util.InputMismatchException;
  */
 
 public class Picture {
-    private static final int INITIAL_RADIUS = 5;
-    private static int dotRadius = INITIAL_RADIUS;
+
     private double canvasHeight = 0;
     private double canvasWidth = 0;
+
+    private static final int RADII_IN_DIAMETER = 2;
+    private static final int X_POS_IN_ARRAY = 0;
+    private static final int Y_POS_IN_ARRAY = 1;
     private Color color;
-    private double x;
-    private double y;
     private ArrayList<Dot> dots = new ArrayList<>();
-    public void setWidth(int width) {
-        dotRadius = width;
-    }
-    public void setColor(Color color) {
-        this.color = color;
-    }
     /**
      * Requires the height and width of the given canvas item
      * @param height for height of canvas
@@ -48,28 +44,40 @@ public class Picture {
         this.color = Color.BLACK;
     }
     /**
-     * Loads
+     * Sets the radius of a circle
+     * @param radius new radius of circle.
+     */
+    public void setDotRadius(int radius) {
+        Dot.setRadius(radius);
+    }
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    /**
+     * Loads a .dot file, and displays a traditional dots and lines view.
      * @param file file to read points from
      * @throws InputMismatchException if the file contains
-     *         data seperated by commas but in an incorrect format
+     *         data separated by commas but in an incorrect format
      *         (e.g., not in double form)
-     * @throws IOException if file has error
+     * @throws IOException if file has error being opened
      */
     public void load(File file)
             throws IOException, InputMismatchException{
-
         FileReader io = new FileReader(file);
         BufferedReader reader = new BufferedReader(io);
         String currentLine = "";
         dots.clear();
         while(reader.ready()) {
             currentLine = reader.readLine();
-            getCoordinatesFromLine(currentLine);
-            dots.add(new Dot(x, y));
+            double[] dotXY = getCoordinatesFromLine(currentLine);
+            Dot dotToAdd = new Dot(dotXY[X_POS_IN_ARRAY], dotXY[Y_POS_IN_ARRAY]);
+            dotToAdd.scaleCoordPair(canvasWidth, canvasHeight);
+            dots.add(dotToAdd);
         }
     }
     /**
      * Draws every dot in the list of dots on the canvas.
+     * Dots are CENTERED on the point given by the dot.
      * @param canvas the canvas to draw on
      */
     public void drawDots(Canvas canvas) {
@@ -77,15 +85,16 @@ public class Picture {
         applySettings(drawer);
         drawer.setStroke(color);
         for (Dot dot : dots) {
-            double centeredXTranslator = canvasWidth - (dot.getX() + (dotRadius));
-            double centeredYTranslator = canvasHeight - (dot.getY() + (dotRadius));
+            double centeredXTranslator = canvasWidth - (dot.getX() + (Dot.getRadius()));
+            double centeredYTranslator = canvasHeight - (dot.getY() + (Dot.getRadius()));
             drawer.setFill(color);
             drawer.fillOval(centeredXTranslator, centeredYTranslator,
-                    dotRadius * 2, dotRadius * 2);
+                    Dot.getRadius() * RADII_IN_DIAMETER,
+                    Dot.getRadius() * RADII_IN_DIAMETER);
         }
     }
     /**
-     * Connects the dots on the canvas with lines
+     * Connects the dots on the canvas with lines.
      * @param canvas the canvas to draw on
      */
     public void drawLines(Canvas canvas) {
@@ -102,7 +111,7 @@ public class Picture {
         context.closePath();
     }
     /**
-     * Connects the dots listed in the dots list
+     * Connects the dots found in the dots list
      * with quadratic curves.
      * @param canvas the canvas to draw on
      *
@@ -168,14 +177,19 @@ public class Picture {
         }
         context.closePath();
     }
-
+    /**
+     * Applies the user's settings (set under the options tab)
+     * @param context the context to use (from a canvas)
+     */
     public void applySettings(GraphicsContext context) {
         context.setStroke(color);
     }
-    private void getCoordinatesFromLine(String string)
+    private double[] getCoordinatesFromLine(String string)
             throws InputMismatchException, NumberFormatException {
         String[] components = string.split(",");
-        x = Double.parseDouble(components[0]) * canvasWidth;
-        y = Double.parseDouble(components[1]) * canvasHeight;
+        double[] xAndY = new double[2];
+        xAndY[X_POS_IN_ARRAY] = Double.parseDouble(components[X_POS_IN_ARRAY]);
+        xAndY[Y_POS_IN_ARRAY] = Double.parseDouble(components[Y_POS_IN_ARRAY]);
+        return xAndY;
     }
 }

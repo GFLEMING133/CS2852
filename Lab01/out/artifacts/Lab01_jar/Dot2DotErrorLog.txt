@@ -1,4 +1,4 @@
-Program started at time 1520887132751
+Program started at time 1520887777409
 An exception occurred, see details below: 
-TIME: Mon Mar 12 15:38:56 CDT 2018
+TIME: Mon Mar 12 15:49:41 CDT 2018
 User did not specify a file upon exiting the file chooser

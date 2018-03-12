@@ -37,10 +37,7 @@
                   </MenuItem>
                   <MenuItem mnemonicParsing="false" text="Dot Radius">
                      <graphic>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <TextField fx:id="radius" />
-                           </children></Pane>
+                        <TextField fx:id="radius" promptText="dot radius" />
                      </graphic>
                   </MenuItem>
                </items>

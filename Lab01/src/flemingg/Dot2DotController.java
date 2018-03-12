@@ -28,7 +28,8 @@ import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 /**
- * Dot2DotController
+ * Dot2DotController handles scene events & initializes
+ * the scene.
  * @author flemingg
  * @version 1.0
  */
@@ -57,7 +58,7 @@ public class Dot2DotController implements Initializable {
     private boolean loadSuccessful;
 
     /**
-     * initializes the GUI
+     * initializes the GUI & sets up logging.
      * @param url location of fxml
      * @param resources any info needed to find url
      */
@@ -100,8 +101,8 @@ public class Dot2DotController implements Initializable {
         });
         radius.setOnAction(ae -> {
             try {
-                pic.setWidth(Integer.parseInt(radius.getText()));
-            } catch (InputMismatchException e) {
+                pic.setDotRadius(Integer.parseInt(radius.getText()));
+            } catch (NumberFormatException e) {
                 status.setText("Enter an integer please.");
             }
 
